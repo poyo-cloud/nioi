@@ -71,11 +71,13 @@
         <div id="activeRoundControls">
           <form id="scheduleForm" class="time-form">
             <div class="time-input-group">
-              <label class="field-label" for="minutesInput">呼吸開始時刻</label>
+              <label class="field-label" for="primaryMinutesInput" id="primaryTimeLabel">
+                対照安静開始時刻
+              </label>
               <div class="time-stack">
                 <div class="time-box">
                   <input
-                    id="minutesInput"
+                    id="primaryMinutesInput"
                     class="time-input"
                     inputmode="numeric"
                     pattern="[0-9]*"
@@ -87,7 +89,38 @@
                 </div>
                 <div class="time-box">
                   <input
-                    id="secondsInput"
+                    id="primarySecondsInput"
+                    class="time-input"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    type="number"
+                    min="0"
+                    max="59"
+                    placeholder="秒"
+                  />
+                  <span>秒</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="time-input-group" id="breathingTimeGroup" hidden>
+              <label class="field-label" for="breathingMinutesInput">呼吸測定開始時刻</label>
+              <div class="time-stack">
+                <div class="time-box">
+                  <input
+                    id="breathingMinutesInput"
+                    class="time-input"
+                    inputmode="numeric"
+                    pattern="[0-9]*"
+                    type="number"
+                    min="0"
+                    placeholder="分"
+                  />
+                  <span>分</span>
+                </div>
+                <div class="time-box">
+                  <input
+                    id="breathingSecondsInput"
                     class="time-input"
                     inputmode="numeric"
                     pattern="[0-9]*"
@@ -133,29 +166,18 @@
         <div class="panel-title-row">
           <div>
             <p class="eyebrow">Finish</p>
-            <h2>完了メモ</h2>
+            <h2>記録完了</h2>
           </div>
-          <span class="badge-strong">7条件完了</span>
+          <span class="badge-strong" id="finalBadge">対照 + 7条件完了</span>
         </div>
 
         <p class="helper-text">
-          ここに今回の記録をまとめます。7回目の記録完了時に、この端末の履歴へ自動保存されます。
+          この端末の履歴へ自動保存しました。必要なら、あとで別ツールに取り込むためのCSVを書き出してください。
         </p>
 
-        <label class="field-label" for="sessionNote">セッション全体メモ</label>
-        <textarea
-          id="sessionNote"
-          class="memo-input"
-          rows="3"
-          placeholder="例: 被験者の様子 / 全体所感"
-        ></textarea>
-
-        <label class="field-label" for="finalMemo">出力メモ</label>
-        <textarea id="finalMemo" class="memo-output" rows="18" readonly></textarea>
-
         <div class="button-row">
-          <button id="copyButton" class="button-primary" type="button">
-            メモをコピー
+          <button id="exportCsvButton" class="button-primary" type="button">
+            CSVを書き出す
           </button>
           <button id="newSessionButton" class="button-ghost" type="button">
             新しいセッションへ

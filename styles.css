@@ -190,6 +190,7 @@ h2 {
 
 .text-input,
 .time-input,
+.file-input,
 .memo-input,
 .memo-output {
   width: 100%;
@@ -204,6 +205,7 @@ h2 {
 }
 
 .text-input,
+.file-input,
 .memo-input,
 .memo-output {
   padding: 14px 16px;
@@ -334,6 +336,16 @@ h2 {
   display: grid;
   gap: 16px;
   margin-bottom: 12px;
+}
+
+.support-stack {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.file-input {
+  padding: 12px 14px;
 }
 
 .time-stack {

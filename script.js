@@ -1371,11 +1371,10 @@ function escapeCsvCell(value) {
 }
 
 function createExportFilename(session) {
-  const label = session.sessionLabel.trim()
+  const participantId = session.sessionLabel.trim()
     ? session.sessionLabel.trim().replace(/[\\/:*?"<>|]/g, "_")
-    : `pattern-${session.pattern}`;
-  const stamp = new Date().toISOString().replaceAll(":", "-").slice(0, 19);
-  return `${label}-respiration-summary-${stamp}.csv`;
+    : "participant";
+  return `Nioi_${participantId}.csv`;
 }
 
 function downloadTextFile(filename, text, mimeType) {
